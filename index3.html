@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moji Gaming Empire 🎮 | Global Gaming & Wholesale Marketplace</title>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-dark: #090d16;
+            --card-bg: #131b2e;
+            --accent-blue: #38bdf8;
+            --accent-neon: #10b981;
+            --accent-purple: #8b5cf6;
+            --text-light: #f8fafc;
+            --text-muted: #94a3b8;
+            --border-color: #1e293b;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            line-height: 1.5;
+        }
+
+        /* Top Bar */
+        .top-bar {
+            background: #0f172a;
+            padding: 0.5rem 2rem;
+            font-size: 0.85rem;
+            display: flex;
+            justify-content: space-between;
+            color: var(--text-muted);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .top-bar a {
+            color: var(--accent-blue);
+            text-decoration: none;
+            margin-left: 1rem;
+        }
+
+        /* Main Header (Amazon Style) */
+        header {
+            background: #0f172a;
+            padding: 1rem 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1.5rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--accent-blue);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .search-box {
+            flex-grow: 1;
+            max-width: 600px;
+            display: flex;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 0.7rem 1rem;
+            border: none;
+            border-radius: 8px 0 0 8px;
+            background: #1e293b;
+            color: white;
+            outline: none;
+        }
+
+        .search-box button {
+            background: var(--accent-blue);
+            border: none;
+            padding: 0 1.2rem;
+            border-radius: 0 8px 8px 0;
+            cursor: pointer;
+            color: #0f172a;
+            font-weight: bold;
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .icon-btn {
+            position: relative;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.3rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .badge {
+            position: absolute;
+            top: -8px;
+            right: -10px;
+            background: #ef4444;
+            color: white;
+            font-size: 0.75rem;
+            padding: 2px 6px;
+            border-radius: 50%;
+            font-weight: bold;
+        }
+
+        /* Navigation Links */
+        nav {
+            background: #1e293b;
+            padding: 0.75rem 2rem;
+            display: flex;
+            gap: 1.5rem;
+            overflow-x: auto;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        nav a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            white-space: nowrap;
+            transition: color 0.2s;
+        }
+
+        nav a:hover,
+        nav a.active {
+            color: var(--accent-blue);
+        }
+
+        /* Hero Banner */
+        .hero {
+            background: linear-gradient(90deg, #0f172a 0%, #1e1b4b 100%);
+            padding: 3rem 2rem;
+            text-align: center;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero p {
+            color: var(--text-muted);
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-btn {
+            background: var(--accent-neon);
+            color: #0f172a;
+            padding: 0.8rem 2rem;
+            font-weight: bold;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        /* Layout Container */
+        .main-layout {
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            gap: 2rem;
+            padding: 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        /* Sidebar Filters */
+        .sidebar {
+            background: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 12px;
+            height: fit-content;
+            border: 1px solid var(--border-color);
+        }
+
+        .filter-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .filter-group h4 {
+            margin-bottom: 0.8rem;
+            color: var(--accent-blue);
+        }
+
+        .filter-group label {
+            display: block;
+            margin-bottom: 0.4rem;
+            color: var(--text-muted);
+            cursor: pointer;
+        }
+
+        /* Product Grid */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .product-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(56, 189, 248, 0.15);
+        }
+
+        .tag {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: var(--accent-purple);
+            color: white;
+            font-size: 0.75rem;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+
+        .product-card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+
+        .product-info {
+            padding: 1.2rem;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .product-title {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .product-meta {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 0.8rem;
+        }
+
+        .price-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: auto;
+        }
+
+        .price {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: var(--accent-neon);
+        }
+
+        .btn-add {
+            background: var(--accent-blue);
+            color: #0f172a;
+            border: none;
+            padding: 0.6rem 1rem;
+            border-radius: 6px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .btn-add:hover {
+            background: #0284c7;
+            color: white;
+        }
+
+        /* Wholesale / Alibaba Section */
+        .wholesale-section {
+            grid-column: 1 / -1;
+            background: linear-gradient(135deg, #1e1b4b 0%, #311b92 100%);
+            padding: 2.5rem;
+            border-radius: 16px;
+            margin-top: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border: 1px solid var(--accent-purple);
+        }
+
+        /* Cart Drawer Slide-out */
+        .cart-modal {
+            position: fixed;
+            top: 0;
+            right: -400px;
+            width: 380px;
+            height: 100%;
+            background: #0f172a;
+            box-shadow: -5px 0 25px rgba(0, 0, 0, 0.8);
+            z-index: 2000;
+            transition: right 0.3s ease;
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .cart-modal.open {
+            right: 0;
+        }
+
+        .cart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 1rem;
+        }
+
+        .cart-items {
+            flex-grow: 1;
+            overflow-y: auto;
+            margin: 1rem 0;
+        }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            background: var(--card-bg);
+            padding: 0.8rem;
+            border-radius: 8px;
+        }
+
+        .cart-total {
+            border-top: 1px solid var(--border-color);
+            padding-top: 1rem;
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+
+        .checkout-btn {
+            width: 100%;
+            background: var(--accent-neon);
+            color: #0f172a;
+            border: none;
+            padding: 0.9rem;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 1rem;
+        }
+
+        /* Responsive Breakpoints */
+        @media(max-width: 992px) {
+            .main-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .sidebar {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <span><i class="fa-solid fa-truck-fast"></i> Worldwide Express Shipping Available</span>
+        <div>
+            <span>Currency: <b>USD ($)</b></span>
+            <a href="#">Support 24/7</a>
+            <a href="#">Wholesale Portal</a>
+        </div>
+    </div>
+
+    <!-- Main Navigation Header -->
+    <header>
+        <a href="#" class="logo"><i class="fa-solid fa-gamepad"></i> MOJI EMPIRE</a>
+        <div class="search-box">
+            <input type="text" id="searchInput" placeholder="Search 10,000+ Games, Laptops, Accessories..."
+                onkeyup="filterProducts()">
+            <button><i class="fa-solid fa-magnifying-glass"></i></button>
+        </div>
+        <div class="header-actions">
+            <button class="icon-btn" onclick="toggleCart()">
+                <i class="fa-solid fa-cart-shopping"></i>
+                <span class="badge" id="cartBadge">0</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Sub Header Categories -->
+    <nav>
+        <a href="#" class="active" onclick="filterCat('All')">All Products</a>
+        <a href="#" onclick="filterCat('Video Games')">Video Games</a>
+        <a href="#" onclick="filterCat('Laptops')">Gaming Laptops</a>
+        <a href="#" onclick="filterCat('Peripherals')">Keyboards & Mice</a>
+        <a href="#" onclick="filterCat('VR')">VR Gear</a>
+        <a href="#" onclick="filterCat('Wholesale')">Bulk / Wholesale</a>
+    </nav>
+
+    <!-- Hero Announcement Section -->
+    <div class="hero">
+        <h1>Mega Gaming Clearance & Wholesale Hub</h1>
+        <p>Buy single items or order in bulk for your tech shop at distributor rates!</p>
+        <button class="hero-btn" onclick="alert('Welcome to Moji Mega Marketplace!')">Explore Trending Deals</button>
+    </div>
+
+    <!-- Main Content Layout -->
+    <div class="main-layout">
+        <!-- Sidebar Filters -->
+        <aside class="sidebar">
+            <h3>Filter Inventory</h3>
+            <br>
+            <div class="filter-group">
+                <h4>Categories</h4>
+                <label><input type="checkbox" checked onclick="filterCat('All')"> All Items</label>
+                <label><input type="checkbox" onclick="filterCat('Video Games')"> Games</label>
+                <label><input type="checkbox" onclick="filterCat('Laptops')"> Laptops</label>
+                <label><input type="checkbox" onclick="filterCat('Peripherals')"> Accessories</label>
+            </div>
+            <div class="filter-group">
+                <h4>Price Range</h4>
+                <label><input type="radio" name="price" onclick="filterPrice(0, 10000)"> All Prices</label>
+                <label><input type="radio" name="price" onclick="filterPrice(0, 50)"> Under $50</label>
+                <label><input type="radio" name="price" onclick="filterPrice(50, 500)"> $50 - $500</label>
+                <label><input type="radio" name="price" onclick="filterPrice(500, 5000)"> $500+</label>
+            </div>
+        </aside>
+
+        <!-- Product Grid Display -->
+        <main>
+            <div class="product-grid" id="productGrid"></div>
+        </main>
+
+        <!-- Wholesale Banner Section -->
+        <div class="wholesale-section">
+            <div>
+                <h2><i class="fa-solid fa-boxes-packing"></i> Alibaba-Style B2B Bulk Ordering</h2>
+                <p>Are you a vendor? Order 10+ units of any laptop or console to get 25% wholesale discount!</p>
+            </div>
+            <button class="hero-btn" style="background: var(--accent-blue);"
+                onclick="alert('RFQ Form Sent! Our team will contact your office.')">Request Bulk Quote</button>
+        </div>
+    </div>
+
+    <!-- Slide-Out Shopping Cart Drawer -->
+    <div class="cart-modal" id="cartModal">
+        <div class="cart-header">
+            <h3>Your Shopping Cart</h3>
+            <button class="icon-btn" onclick="toggleCart()"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <div class="cart-items" id="cartItems">
+            <p style="text-align: center; color: var(--text-muted); margin-top: 2rem;">Your cart is empty.</p>
+        </div>
+        <div class="cart-total">
+            Total: $<span id="cartTotal">0.00</span>
+        </div>
+        <button class="checkout-btn" onclick="processCheckout()">Proceed to Checkout</button>
+    </div>
+
+    <!-- JavaScript Application Logic -->
+    <script>
+        const products = [
+            { id: 1, title: "Cyber Strike 2077 (PC Digital)", category: "Video Games", price: 59.99, tag: "Hot", img: "https://images.unsplash.com/photo-1542751371-adc38448a05e?w=500" },
+            { id: 2, title: "Asus ROG RTX 4080 Gaming Laptop", category: "Laptops", price: 1899.99, tag: "Pro Tech", img: "https://images.unsplash.com/photo-1603302576837-37561b2e2302?w=500" },
+            { id: 3, title: "RGB Mechanical Keyboard Red Switch", category: "Peripherals", price: 79.99, tag: "Top Rated", img: "https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=500" },
+            { id: 4, title: "Oculus Quest VR Headset 256GB", category: "VR", price: 499.99, tag: "New", img: "https://images.unsplash.com/photo-1622979135225-d2ba269bc1bd?w=500" },
+            { id: 5, title: "Wireless Ultra-Fast Gaming Mouse", category: "Peripherals", price: 49.99, tag: "Best Value", img: "https://images.unsplash.com/photo-1615663245857-ac93bb7c39e7?w=500" },
+            { id: 6, title: "Shadow Legends RPG Deluxe", category: "Video Games", price: 49.99, tag: "Trending", img: "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?w=500" }
+        ];
+
+        let cart = [];
+
+        function renderProducts(items) {
+            const grid = document.getElementById('productGrid');
+            grid.innerHTML = '';
+            items.forEach(p => {
+                grid.innerHTML += `
+                    <div class="product-card">
+                        <span class="tag">${p.tag}</span>
+                        <img src="${p.img}" alt="${p.title}">
+                        <div class="product-info">
+                            <span class="product-meta">${p.category}</span>
+                            <h4 class="product-title">${p.title}</h4>
+                            <div class="price-row">
+                                <span class="price">$${p.price.toFixed(2)}</span>
+                                <button class="btn-add" onclick="addToCart(${p.id})">+ Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+        }
+
+        function addToCart(id) {
+            const product = products.find(p => p.id === id);
+            cart.push(product);
+            updateCartUI();
+            alert(`${product.title} has been added to your cart, Moji! 🛒`);
+        }
+
+        function updateCartUI() {
+            document.getElementById('cartBadge').innerText = cart.length;
+            const cartItemsContainer = document.getElementById('cartItems');
+            let total = 0;
+
+            if (cart.length === 0) {
+                cartItemsContainer.innerHTML = '<p style="text-align: center; color: var(--text-muted); margin-top: 2rem;">Your cart is empty.</p>';
+            } else {
+                cartItemsContainer.innerHTML = '';
+                cart.forEach((item, idx) => {
+                    total += item.price;
+                    cartItemsContainer.innerHTML += `
+                        <div class="cart-item">
+                            <div>
+                                <h5 style="font-size:0.9rem;">${item.title}</h5>
+                                <span style="color:var(--accent-neon); font-size:0.85rem;">$${item.price.toFixed(2)}</span>
+                            </div>
+                            <button class="icon-btn" style="color:#ef4444;" onclick="removeFromCart(${idx})"><i class="fa-solid fa-trash"></i></button>
+                        </div>
+                    `;
+                });
+            }
+            document.getElementById('cartTotal').innerText = total.toFixed(2);
+        }
+
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            updateCartUI();
+        }
+
+        function toggleCart() {
+            document.getElementById('cartModal').classList.toggle('open');
+        }
+
+        function filterProducts() {
+            const q = document.getElementById('searchInput').value.toLowerCase();
+            const filtered = products.filter(p => p.title.toLowerCase().includes(q) || p.category.toLowerCase().includes(q));
+            renderProducts(filtered);
+        }
+
+        function filterCat(category) {
+            if (category === 'All') {
+                renderProducts(products);
+            } else {
+                renderProducts(products.filter(p => p.category === category));
+            }
+        }
+
+        function filterPrice(min, max) {
+            renderProducts(products.filter(p => p.price >= min && p.price <= max));
+        }
+
+        function processCheckout() {
+            if (cart.length === 0) {
+                alert('Your cart is empty, Moji!');
+                return;
+            }
+            alert(`Order Confirmed! Total amount paid: $${document.getElementById('cartTotal').innerText}. Thank you for shopping at Moji Empire! ❤️🎉`);
+            cart = [];
+            updateCartUI();
+            toggleCart();
+        }
+
+        // Initialize Store
+        renderProducts(products);
+    </script>
+</body>
+
+</html>

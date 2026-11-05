@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moji Game Store | Ultimate Gaming Experience</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            cyan: '#00f3ff',
+                            purple: '#9d4edd',
+                            dark: '#0f172a',
+                            card: '#1e293b'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800&family=Inter:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0b0f19;
+            color: #f8fafc;
+        }
+
+        .font-orbitron {
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        .glow-effect {
+            box-shadow: 0 0 15px rgba(0, 243, 255, 0.3);
+        }
+
+        .glow-effect:hover {
+            box-shadow: 0 0 25px rgba(0, 243, 255, 0.6);
+        }
+
+        .glow-purple {
+            box-shadow: 0 0 15px rgba(157, 78, 221, 0.3);
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #0f172a;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #334155;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #00f3ff;
+        }
+    </style>
+</head>
+
+<body class="min-h-screen flex flex-col justify-between selection:bg-cyan-500 selection:text-black">
+
+    <!-- Header & Navigation -->
+    <header class="sticky top-0 z-40 bg-slate-900/90 backdrop-blur-md border-b border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-4">
+
+            <!-- Logo -->
+            <div class="flex items-center gap-3">
+                <div
+                    class="w-10 h-10 rounded-xl bg-gradient-to-tr from-cyan-500 to-purple-600 flex items-center justify-center text-black font-black text-xl shadow-lg glow-effect">
+                    <i class="fa-solid font-orbitron">M</i>
+                </div>
+                <div>
+                    <h1
+                        class="font-orbitron text-xl sm:text-2xl font-bold tracking-wider bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-purple-500">
+                        Moiz <span class="text-white text-base font-normal hidden sm:inline">GAME STORE</span>
+                    </h1>
+                </div>
+            </div>
+
+            <!-- Search Bar -->
+            <div class="flex-1 max-w-md mx-2 sm:mx-4">
+                <div class="relative">
+                    <input type="text" id="searchInput" placeholder="Search your favorite game..."
+                        class="w-full bg-slate-800/80 border border-slate-700 rounded-full py-2 pl-10 pr-4 text-sm text-slate-100 placeholder-slate-400 focus:outline-none focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400 transition-all">
+                    <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-2.5 text-slate-400 text-sm"></i>
+                </div>
+            </div>
+
+            <!-- Cart Icon & Actions -->
+            <div class="flex items-center gap-4">
+                <button id="cartBtn"
+                    class="relative p-2.5 rounded-full bg-slate-800 border border-slate-700 hover:border-cyan-400 text-slate-200 hover:text-cyan-400 transition-all">
+                    <i class="fa-solid fa-cart-shopping text-lg"></i>
+                    <span id="cartBadge"
+                        class="absolute -top-1 -right-1 bg-cyan-400 text-slate-950 font-bold text-xs w-5 h-5 rounded-full flex items-center justify-center shadow-md">0</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-10">
+
+        <!-- Hero Banner -->
+        <section
+            class="relative rounded-3xl overflow-hidden border border-slate-800 glow-purple bg-gradient-to-r from-purple-950/70 via-slate-900 to-cyan-950/70 p-6 sm:p-10 lg:p-12">
+            <div
+                class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=1200')] bg-cover bg-center opacity-15 mix-blend-overlay">
+            </div>
+            <div class="relative z-10 max-w-2xl space-y-4">
+                <span
+                    class="inline-block px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider bg-cyan-400/10 text-cyan-400 border border-cyan-400/30">
+                    🔥 Special Weekend Sale
+                </span>
+                <h2 class="font-orbitron text-3xl sm:text-5xl font-extrabold tracking-wide leading-tight text-white">
+                    LEVEL UP YOUR <span
+                        class="bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-purple-400">GAMING
+                        EXPERIENCE</span>
+                </h2>
+                <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
+                    Get up to 70% discount on top AAA blockbusters. Instant digital codes, best prices in PKR & USD,
+                    24/7 gamer support.
+                </p>
+                <div class="pt-2">
+                    <a href="#gamesSection"
+                        class="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-cyan-500 to-purple-600 hover:from-cyan-400 hover:to-purple-500 text-slate-950 font-bold text-sm uppercase tracking-wider shadow-lg transition-all transform hover:-translate-y-0.5">
+                        <i class="fa-solid fa-gamepad"></i> Explore Games
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Filter & Section Header -->
+        <section id="gamesSection" class="space-y-6">
+            <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+                <div>
+                    <h3 class="font-orbitron text-2xl font-bold text-white tracking-wide">Featured Titles</h3>
+                    <p class="text-xs sm:text-sm text-slate-400">Discover trending titles across all platforms</p>
+                </div>
+
+                <!-- Category Filters -->
+                <div class="flex items-center gap-2 overflow-x-auto pb-2 md:pb-0 scrollbar-none">
+                    <button
+                        class="filter-btn active px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all bg-cyan-400 text-slate-950 shadow-md"
+                        data-category="all">All Games</button>
+                    <button
+                        class="filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all bg-slate-800 text-slate-300 hover:bg-slate-700 hover:text-white"
+                        data-category="action">Action</button>
+                    <button
+                        class="filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all bg-slate-800 text-slate-300 hover:bg-slate-700 hover:text-white"
+                        data-category="rpg">RPG</button>
+                    <button
+                        class="filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all bg-slate-800 text-slate-300 hover:bg-slate-700 hover:text-white"
+                        data-category="openworld">Open World</button>
+                    <button
+                        class="filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all bg-slate-800 text-slate-300 hover:bg-slate-700 hover:text-white"
+                        data-category="sports">Sports</button>
+                </div>
+            </div>
+
+            <!-- Game Cards Grid -->
+            <div id="gamesGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                <!-- Dynamically Rendered by JS -->
+            </div>
+
+            <!-- Empty State (No Search Results) -->
+            <div id="noResults" class="hidden text-center py-16 space-y-4">
+                <i class="fa-solid fa-ghost text-5xl text-slate-600"></i>
+                <h4 class="text-lg font-semibold text-slate-300">No games found</h4>
+                <p class="text-sm text-slate-500">Try searching for something else or clear your filters.</p>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-950 border-t border-slate-800 py-8 mt-12">
+        <div
+            class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center sm:text-left flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div class="flex items-center gap-2">
+                <span class="font-orbitron font-bold text-lg text-cyan-400">MOJI STORE</span>
+                <span class="text-xs text-slate-500">© 2026 Crafted with ❤️ for Moji</span>
+            </div>
+            <div class="flex items-center gap-6 text-slate-400 text-sm">
+                <a href="#" class="hover:text-cyan-400 transition-colors">Privacy Policy</a>
+                <a href="#" class="hover:text-cyan-400 transition-colors">Terms of Service</a>
+                <a href="#" class="hover:text-cyan-400 transition-colors">Support</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Cart Drawer Modal -->
+    <div id="cartModal" class="fixed inset-0 z-50 invisible opacity-0 transition-all duration-300">
+        <!-- Backdrop -->
+        <div id="cartBackdrop" class="absolute inset-0 bg-slate-950/80 backdrop-blur-sm"></div>
+
+        <!-- Sidebar Content -->
+        <div
+            class="absolute right-0 top-0 bottom-0 w-full max-w-md bg-slate-900 border-l border-slate-800 p-6 flex flex-col justify-between shadow-2xl transform translate-x-full transition-transform duration-300 id-cart-panel">
+
+            <!-- Cart Header -->
+            <div>
+                <div class="flex items-center justify-between pb-4 border-b border-slate-800">
+                    <div class="flex items-center gap-3">
+                        <i class="fa-solid fa-bag-shopping text-cyan-400 text-xl"></i>
+                        <h3 class="font-orbitron text-lg font-bold text-white">Your Cart</h3>
+                    </div>
+                    <button id="closeCartBtn" class="text-slate-400 hover:text-white p-2">
+                        <i class="fa-solid fa-xmark text-xl"></i>
+                    </button>
+                </div>
+
+                <!-- Items Container -->
+                <div id="cartItemsContainer" class="mt-4 space-y-4 max-h-[60vh] overflow-y-auto pr-1">
+                    <!-- Dynamically populated -->
+                </div>
+            </div>
+
+            <!-- Cart Footer / Total -->
+            <div class="border-t border-slate-800 pt-4 space-y-4">
+                <div class="flex justify-between items-center text-sm">
+                    <span class="text-slate-400">Total Items:</span>
+                    <span id="cartTotalItems" class="font-semibold text-white">0</span>
+                </div>
+                <div class="flex justify-between items-center">
+                    <span class="text-slate-300 font-semibold">Total Price:</span>
+                    <span id="cartTotalPrice" class="font-orbitron text-xl font-bold text-cyan-400">PKR 0</span>
+                </div>
+                <button id="checkoutBtn"
+                    class="w-full py-3.5 rounded-xl bg-gradient-to-r from-cyan-400 to-purple-600 hover:from-cyan-300 hover:to-purple-500 text-slate-950 font-bold uppercase tracking-wider text-sm transition-all shadow-lg glow-effect">
+                    Checkout Now
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Order Success Toast Modal -->
+    <div id="successModal"
+        class="fixed inset-0 z-50 flex items-center justify-center p-4 invisible opacity-0 transition-all duration-300">
+        <div class="absolute inset-0 bg-slate-950/80 backdrop-blur-sm"></div>
+        <div
+            class="relative bg-slate-900 border border-slate-700 rounded-2xl p-6 sm:p-8 max-w-sm w-full text-center space-y-4 shadow-2xl">
+            <div
+                class="w-16 h-16 bg-cyan-400/20 text-cyan-400 rounded-full flex items-center justify-center mx-auto text-3xl">
+                <i class="fa-solid fa-check"></i>
+            </div>
+            <h3 class="font-orbitron text-xl font-bold text-white">Order Confirmed!</h3>
+            <p class="text-slate-300 text-sm">Thank you, Moji! Your game key activation codes have been dispatched to
+                your email.</p>
+            <button id="closeSuccessBtn"
+                class="w-full py-2.5 rounded-xl bg-cyan-400 text-slate-950 font-bold text-sm hover:bg-cyan-300 transition-all">
+                Continue Shopping
+            </button>
+        </div>
+    </div>
+
+    <!-- JavaScript Logic -->
+    <script>
+        // Sample Game Data
+        const games = [
+            {
+                id: 1,
+                title: "Cyberpunk 2077: Phantom Liberty",
+                category: "rpg",
+                price: 14500,
+                originalPrice: 18000,
+                rating: 4.8,
+                platforms: ["PC", "PS5", "Xbox"],
+                image: "https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=600"
+            },
+            {
+                id: 2,
+                title: "Grand Theft Auto V",
+                category: "openworld",
+                price: 7500,
+                originalPrice: 12000,
+                rating: 4.9,
+                platforms: ["PC", "PS5", "Xbox"],
+                image: "https://images.unsplash.com/photo-1612287230202-1ff1d85d1bdf?q=80&w=600"
+            },
+            {
+                id: 3,
+                title: "FC 24 Sports Edition",
+                category: "sports",
+                price: 11000,
+                originalPrice: 16000,
+                rating: 4.5,
+                platforms: ["PS5", "Xbox"],
+                image: "https://images.unsplash.com/photo-1508098682722-e99c43a406b2?q=80&w=600"
+            },
+            {
+                id: 4,
+                title: "Elden Ring: Shadow of Erdtree",
+                category: "rpg",
+                price: 13500,
+                originalPrice: 17000,
+                rating: 5.0,
+                platforms: ["PC", "PS5"],
+                image: "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=600"
+            },
+            {
+                id: 5,
+                title: "God of War Ragnarök",
+                category: "action",
+                price: 16000,
+                originalPrice: 20000,
+                rating: 4.9,
+                platforms: ["PS5", "PC"],
+                image: "https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=600"
+            },
+            {
+                id: 6,
+                title: "Need For Speed Unbound",
+                category: "sports",
+                price: 8500,
+                originalPrice: 14000,
+                rating: 4.2,
+                platforms: ["PC", "Xbox"],
+                image: "https://images.unsplash.com/photo-1552824722-68d279427727?q=80&w=600"
+            },
+            {
+                id: 7,
+                title: "Spider-Man 2",
+                category: "openworld",
+                price: 15500,
+                originalPrice: 19000,
+                rating: 4.8,
+                platforms: ["PS5"],
+                image: "https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?q=80&w=600"
+            },
+            {
+                id: 8,
+                title: "Call of Duty: Modern Warfare III",
+                category: "action",
+                price: 16500,
+                originalPrice: 21000,
+                rating: 4.4,
+                platforms: ["PC", "PS5", "Xbox"],
+                image: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=600"
+            }
+        ];
+
+        // Cart State
+        let cart = [];
+        let activeCategory = 'all';
+
+        // DOM Elements
+        const gamesGrid = document.getElementById('gamesGrid');
+        const searchInput = document.getElementById('searchInput');
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const cartBtn = document.getElementById('cartBtn');
+        const cartBadge = document.getElementById('cartBadge');
+        const cartModal = document.getElementById('cartModal');
+        const cartBackdrop = document.getElementById('cartBackdrop');
+        const closeCartBtn = document.getElementById('closeCartBtn');
+        const cartItemsContainer = document.getElementById('cartItemsContainer');
+        const cartTotalItems = document.getElementById('cartTotalItems');
+        const cartTotalPrice = document.getElementById('cartTotalPrice');
+        const checkoutBtn = document.getElementById('checkoutBtn');
+        const successModal = document.getElementById('successModal');
+        const closeSuccessBtn = document.getElementById('closeSuccessBtn');
+        const noResults = document.getElementById('noResults');
+
+        // Render Games Function
+        function renderGames() {
+            const searchTerm = searchInput.value.toLowerCase().trim();
+
+            const filtered = games.filter(game => {
+                const matchesCategory = activeCategory === 'all' || game.category === activeCategory;
+                const matchesSearch = game.title.toLowerCase().includes(searchTerm);
+                return matchesCategory && matchesSearch;
+            });
+
+            if (filtered.length === 0) {
+                gamesGrid.innerHTML = '';
+                noResults.classList.remove('hidden');
+                return;
+            } else {
+                noResults.classList.add('hidden');
+            }
+
+            gamesGrid.innerHTML = filtered.map(game => `
+                <div class="bg-slate-900 rounded-2xl overflow-hidden border border-slate-800 hover:border-cyan-500/50 transition-all duration-300 flex flex-col justify-between group glow-effect">
+                    <div>
+                        <!-- Cover Image -->
+                        <div class="relative aspect-video overflow-hidden">
+                            <img src="${game.image}" alt="${game.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" onerror="this.src='https://placehold.co/600x400/1e293b/00f3ff?text=Game+Cover'">
+                            <span class="absolute top-3 right-3 bg-slate-950/80 backdrop-blur-md text-amber-400 text-xs px-2.5 py-1 rounded-full border border-amber-400/30 flex items-center gap-1">
+                                <i class="fa-solid fa-star"></i> ${game.rating}
+                            </span>
+                        </div>
+
+                        <!-- Card Body -->
+                        <div class="p-5 space-y-3">
+                            <!-- Platforms -->
+                            <div class="flex items-center gap-1.5">
+                                ${game.platforms.map(p => `<span class="text-[10px] uppercase tracking-wider font-semibold px-2 py-0.5 rounded bg-slate-800 text-slate-400 border border-slate-700">${p}</span>`).join('')}
+                            </div>
+                            
+                            <h4 class="font-orbitron font-semibold text-white text-base leading-snug line-clamp-1 group-hover:text-cyan-400 transition-colors">${game.title}</h4>
+                            
+                            <!-- Price -->
+                            <div class="flex items-baseline gap-2">
+                                <span class="text-cyan-400 font-orbitron font-bold text-lg">PKR ${game.price.toLocaleString()}</span>
+                                <span class="text-xs text-slate-500 line-through">PKR ${game.originalPrice.toLocaleString()}</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Action Button -->
+                    <div class="p-5 pt-0">
+                        <button onclick="addToCart(${game.id})" class="w-full py-2.5 rounded-xl bg-slate-800 hover:bg-cyan-400 hover:text-slate-950 text-cyan-400 font-bold text-xs uppercase tracking-wider transition-all border border-slate-700 hover:border-cyan-400 flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-plus"></i> Add To Cart
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Add to Cart Logic
+        function addToCart(gameId) {
+            const existing = cart.find(item => item.id === gameId);
+            if (existing) {
+                existing.quantity += 1;
+            } else {
+                const game = games.find(g => g.id === gameId);
+                cart.push({ ...game, quantity: 1 });
+            }
+            updateCartUI();
+            openCart();
+        }
+
+        // Remove / Decrease Cart Item
+        function updateQuantity(gameId, change) {
+            const item = cart.find(i => i.id === gameId);
+            if (item) {
+                item.quantity += change;
+                if (item.quantity <= 0) {
+                    cart = cart.filter(i => i.id !== gameId);
+                }
+            }
+            updateCartUI();
+        }
+
+        // Update Cart Drawer UI
+        function updateCartUI() {
+            // Update counter
+            const totalCount = cart.reduce((sum, item) => sum + item.quantity, 0);
+            cartBadge.innerText = totalCount;
+            cartTotalItems.innerText = totalCount;
+
+            // Total price
+            const totalPrice = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            cartTotalPrice.innerText = `PKR ${totalPrice.toLocaleString()}`;
+
+            // Render List
+            if (cart.length === 0) {
+                cartItemsContainer.innerHTML = `
+                    <div class="text-center py-12 space-y-3">
+                        <i class="fa-solid fa-basket-shopping text-4xl text-slate-700"></i>
+                        <p class="text-sm text-slate-500">Your cart is empty.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            cartItemsContainer.innerHTML = cart.map(item => `
+                <div class="flex items-center gap-3 p-3 rounded-xl bg-slate-800/60 border border-slate-700/60">
+                    <img src="${item.image}" alt="${item.title}" class="w-16 h-12 object-cover rounded-lg">
+                    <div class="flex-1 min-w-0">
+                        <h5 class="text-sm font-semibold text-white truncate">${item.title}</h5>
+                        <p class="text-xs text-cyan-400 font-bold">PKR ${item.price.toLocaleString()}</p>
+                    </div>
+                    <div class="flex items-center gap-2 bg-slate-900 border border-slate-700 rounded-lg p-1">
+                        <button onclick="updateQuantity(${item.id}, -1)" class="w-5 h-5 flex items-center justify-center text-xs text-slate-400 hover:text-white">-</button>
+                        <span class="text-xs font-bold text-white px-1">${item.quantity}</span>
+                        <button onclick="updateQuantity(${item.id}, 1)" class="w-5 h-5 flex items-center justify-center text-xs text-slate-400 hover:text-white">+</button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Modal Open / Close Handlers
+        function openCart() {
+            cartModal.classList.remove('invisible', 'opacity-0');
+            cartModal.querySelector('.id-cart-panel').classList.remove('translate-x-full');
+        }
+
+        function closeCart() {
+            cartModal.querySelector('.id-cart-panel').classList.add('translate-x-full');
+            setTimeout(() => {
+                cartModal.classList.add('invisible', 'opacity-0');
+            }, 200);
+        }
+
+        // Event Listeners
+        cartBtn.addEventListener('click', openCart);
+        closeCartBtn.addEventListener('click', closeCart);
+        cartBackdrop.addEventListener('click', closeCart);
+
+        // Search Listener
+        searchInput.addEventListener('input', renderGames);
+
+        // Filter Buttons
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => b.classList.remove('active', 'bg-cyan-400', 'text-slate-950'));
+                filterBtns.forEach(b => b.classList.add('bg-slate-800', 'text-slate-300'));
+
+                btn.classList.add('active', 'bg-cyan-400', 'text-slate-950');
+                btn.classList.remove('bg-slate-800', 'text-slate-300');
+
+                activeCategory = btn.dataset.category;
+                renderGames();
+            });
+        });
+
+        // Checkout Button
+        checkoutBtn.addEventListener('click', () => {
+            if (cart.length === 0) return;
+            cart = [];
+            updateCartUI();
+            closeCart();
+
+            // Show Toast Success Modal
+            setTimeout(() => {
+                successModal.classList.remove('invisible', 'opacity-0');
+            }, 300);
+        });
+
+        closeSuccessBtn.addEventListener('click', () => {
+            successModal.classList.add('invisible', 'opacity-0');
+        });
+
+        // Initial Render
+        renderGames();
+    </script>
+</body>
+
+</html>
